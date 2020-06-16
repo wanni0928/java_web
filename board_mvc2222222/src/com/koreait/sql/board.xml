@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+	<select id="getDetail" parameterType="_int" resultType="boardBean">
+		SELECT * FROM BOARD WHERE BOARD_NUM = ${board_num}
+	</select>
+	
+	<select id="getSeq" resultType="_int">
+		SELECT BOARD_SEQ.CURRVAL FROM DUAL
+	</select>
+
+	<insert id="insertBoard" parameterType="boardBean">
+		INSERT INTO BOARD
+		VALUES(
+			BOARD_SEQ.NEXTVAL, #{board_title}, #{board_contents}, #{member_id}, SYSDATE, 0
+		)
+	</insert>
+
+	<select id="boardCnt" resultType="_int">
+		SELECT COUNT(*) FROM BOARD
+	</select>
+	
+	<select id="listAll" parameterType="map" resultType="boardBean">
+		SELECT * FROM
+			(SELECT ROWNUM R, D.* FROM 
+				(SELECT * FROM BOARD ORDER BY BOARD_NUM DESC) D) B
+				 WHERE B.R BETWEEN ${startRow} AND ${endRow}
+	</select>
+	
+	<update id="updateReadCnt" parameterType="_int">
+		UPDATE BOARD
+		SET BOARD_READCOUNT = BOARD_READCOUNT + 1
+		WHERE BOARD_NUM = ${board_num}
+	</update>
+	
+</mapper>

@@ -1,0 +1,46 @@
+MyBatis(모델과 DB의 매개체)
+	Java 소스코드 안에 SQL문을 작성하면 코드가 길어지고 섞여 있어서
+	유지보수 및 분업이 쉽지 않아진다.
+	MyBatis는 기존 JDBC방식과는 달리 SQL문을 XML파일에 작성함으로써
+	코드가 줄어들고 SQL문 수정이 편해진다. 또한 DBCP를 사용하여 커넥션
+	을 여러개 생성하기 때문에 JDBC만 사용하는 것보다 작업 효율과 가독성
+	이 좋다.
+
+	ibatis는 2.5버전이며 JDK1.4버전 이상,
+	MyBatis는 3.0버전이며 JDK1.5버전 이상에서 지원한다.
+	ibatis와 Mybatis의 차이점은 몇 개의 문법 및 사용용어(명칭) 변경 등이다.
+
+MyBatis 작동 순서
+	1) SqlSessionFactoryBuilder는 SqlSessionFactory를 생성하기 위한
+	    MyBatis 구성 파일을 읽는다.
+	2) 클라이언트가 Application에 대한 프로세스를 요청한다.
+	3) Application은 SqlSessionFactoryBuilder를 사용하여 빌드된
+	    SqlSessionFactory에서 SqlSession을 가져온다.
+	4) SqlSessionFactory는 SqlSession을 생성하고 이를 Application에
+	    리턴한다.
+	5) Application이 SqlSession에서 Mapper인터페이스 구현 개체를 가져온다.
+	6) Application이 Mapper인터페이스 메소드를 호출한다.
+	7) Mapper 인터페이스의 구현 개체가 SqlSession메소드를 호출하고 SQL실행을
+	    요청한다.
+	8) SqlSession은 Mapping파일에서 실행할 SQL을 가져와서 SQL을 실행한다.
+
+MyBatis 설치
+blog.mybatis.org/p/products.html > MyBatis3 download > mybatis-3.5.4.zip 클릭
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+우편번호 API
+	postcodify.poesis.kr
+
+CSS 서버 파일
+	http://d1p7wdleee1q2z.cloudfront.net/post/search.css
